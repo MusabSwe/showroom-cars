@@ -8,6 +8,9 @@ namespace Task2
         private DateTime model;
         private string vehicleType;
         private double Price;
+        public bool IsMoveForward = false;
+        public bool IsMoveBackward = false;
+        public bool IsStop = true;
 
         public Vehicle(int manufacturerNumber, DateTime model, string vehicleType, double price)
         {
@@ -34,9 +37,7 @@ namespace Task2
 
         public void Move()
         {
-            bool IsMoveForward = true;
-            bool IsMoveBackward = true;
-            bool IsStop = true;
+
 
             switch (IsStop)
             {
