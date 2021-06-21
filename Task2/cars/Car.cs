@@ -8,11 +8,15 @@ namespace Task2
         private int passengerNum;
         private int numberOfCylinders;
         private int numberOfDoors;
+        private string name;
+        // --------------------------------
+        public bool IsOpen = false;
 
-        public Car(int passengerNum, int numOfCylinders, int numOfDoors)
+        public Car(string n,int passengerNum, int numOfCylinders, int numOfDoors)
         {
             if (passengerNum > 0 && numOfCylinders > 0 && numOfDoors > 0)
             {
+                this.name = n;
                 this.passengerNum = passengerNum;
                 this.numberOfCylinders = numOfCylinders;
                 this.numberOfDoors = numOfDoors;
@@ -30,6 +34,7 @@ namespace Task2
         {
 
         }
+        public string NameProp { get; set; }
 
         public int PassengerNumProp { get; set; }
 
