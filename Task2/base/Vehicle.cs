@@ -1,20 +1,21 @@
 using System;
+
 namespace Task2
 {
-
     class Vehicle
     {
-        private int manufacturerNumber;
-        private DateTime model;
-        private string vehicleType;
-        private double Price;
-        public bool IsMoveForward = false;
-        public bool IsMoveBackward = false;
-        public bool IsStop = true;
+        public double Price { get; set; }
+
+        public int manufacturerNumber { get; set; }
+
+        public DateTime model { get; set; }
+
+        public string vehicleType { get; set; }
+        
+        public string currentGear = "N";
 
         public Vehicle(int manufacturerNumber, DateTime model, string vehicleType, double price)
         {
-
             this.manufacturerNumber = manufacturerNumber;
             this.model = model;
             this.vehicleType = vehicleType;
@@ -23,47 +24,47 @@ namespace Task2
 
         public Vehicle()
         {
-
         }
 
-        public double PriceProp { get; set; }
 
-        public int ManufacturerNumberProp { get; set; }
+        
 
-        public DateTime VehicleModelProp { get; set; }
-
-        public string VehicleTyperProp { get; set; }
-
-
-        public void Move()
+        public void move(string gear)
         {
-
-
-            switch (IsStop)
+            if (gear == "D" && currentGear == "N")
             {
+                Console.WriteLine("The vehicle moving forward");
 
-                case true:
-                    if (IsMoveBackward == false && IsMoveForward == false)
-                        Console.WriteLine("The vehicle is stopped, you can moveForward or backward");
-                    break;
-                case false:
-                    if (IsMoveForward == true && IsMoveBackward == false)
-                    {
-                        Console.WriteLine("The vehicle moving Forward");
-                    }
-                    else if (IsMoveBackward == true && IsMoveForward == false)
-                    {
-                        Console.WriteLine("The vehicle moving backward");
-                    }
-                    else
-                    {
-                        Console.WriteLine("The vehicle must stop, to change gear");
-                    }
-                    break;
-
+                currentGear = "D";
             }
+            else if (gear == "N")
+            {
+                Console.WriteLine("The vehicle is stopped");
+                currentGear = "N";
+            }
+            else if (gear == "R" && currentGear == "N")
+            {
+                Console.WriteLine("The vehicle moving backward");
 
-
+                currentGear = "R";
+            }
+            else if (gear == "D" && currentGear == "R")
+            {
+                Console.WriteLine("You must stop, to change gear");
+            }else if (gear == "R" && currentGear == "D")
+            {
+                Console.WriteLine("You must stop, to change gear");
+            }else if (gear == "R" && currentGear == "R")
+            {
+                Console.WriteLine("Already vehicle moving backward");
+            }else if (gear == "D" && currentGear == "D")
+            {
+                Console.WriteLine("Already vehicle moving forward"); 
+            }
+            else
+            {
+                Console.WriteLine("Invalid input the gear values should be D, N or R");
+            }
         }
 
         public void turnRight()
@@ -81,6 +82,10 @@ namespace Task2
             Console.WriteLine("fill vehicle by color ");
         }
 
+        public string toString()
+        {
+            return "vehicle type is " + vehicleType + ", manufacturer number is " + manufacturerNumber +
+                   ", and model " + model + " and price: " + Price + " SAR";
+        }
     }
-
 }
