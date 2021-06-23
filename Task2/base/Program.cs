@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace Task2
 {
@@ -7,6 +8,9 @@ namespace Task2
         static void Main(string[] args)
         {
             // Car c1 = new Car();
+            // string pattern = @"^[a-zA-Z]+$";
+            // Regex a = new Regex(pattern);
+
             Bike bike1 = new Bike();
             string carType = "";
             string vehicleType = "";
@@ -45,7 +49,7 @@ namespace Task2
             Wheel wheel10 = new Wheel("GMC Safari", "Pirelli", "Korian ", new DateTime(2021, 6, 11), 20);
             Wheel wheel11 = new Wheel("GMC Safari", "Atlas", "Indian ", new DateTime(2020, 9, 17), 21);
 
-            Console.WriteLine("Enter your name:");
+
             FuelEconomy f1 = new FuelEconomy("Camry", new DateTime(2020, 10, 23), "Green", "Very Good");
             FuelEconomy f2 = new FuelEconomy("Sonata", new DateTime(2017, 5, 1), "Green", "Good");
             FuelEconomy f3 = new FuelEconomy("Hyundai Creta", new DateTime(2019, 10, 23), "Red", "Very Bad");
@@ -60,12 +64,31 @@ namespace Task2
             Wheel wheel12 = new Wheel("Venom", "Cobra", "German ", new DateTime(2021, 2, 22), 12);
             Wheel wheel13 = new Wheel("Rambo", "Kenda", "America ", new DateTime(2020, 9, 17), 9);
 
-            string userName = Console.ReadLine();
-            Console.WriteLine("Hi " + userName + ",There are 2 types of " +
-                              "vehicles Bike and Car.\nwhat type do you want?");
+            //--------------------------------System-------------------------------------------------
+            Console.WriteLine("Enter your name:");
+
+            string userName = "";
+            Regex r = new Regex("^[a-zA-Z]*$");
+            userName = Console.ReadLine();
+            while (!r.IsMatch(userName))
+            {
+                if (r.IsMatch(userName))
+                {
+                    userName = userName;
+                }
+                else
+                {
+                    Console.WriteLine("ReEnter only letters");
+                    userName = Console.ReadLine();
+                }
+            }
+
+            Console.WriteLine("Hi " + userName +
+                              ",Welcome to our website there are 3 options\n1.Car\n2.Bike\n3.Drive Simulation\nPlease write one:");
 
 
-            while (!(vehicleType.ToLower().Equals("car") || vehicleType.ToLower().Equals("bike")))
+            while (!(vehicleType.ToLower().Equals("car") || vehicleType.ToLower().Equals("bike") ||
+                     vehicleType.ToLower().Equals("drive simulation")))
             {
                 vehicleType = Console.ReadLine();
 
@@ -425,7 +448,7 @@ namespace Task2
 
                                     Console.WriteLine("This is a summary of your selection:");
                                     Console.WriteLine(b1.toString());
-                                    Console.WriteLine("Engine type for Venom is "+engine2.EngineName);
+                                    Console.WriteLine("Engine type for Venom is " + engine2.EngineName);
                                     Console.WriteLine(wheel12.toString());
                                     Console.WriteLine(f6.toString());
                                 }
@@ -447,7 +470,45 @@ namespace Task2
                         }
                     }
                 }
-                //-----------------------Validation-------------------------------
+                //-----------------------Drive Simulation-------------------------------
+                else if (vehicleType.ToLower().Equals("drive simulation"))
+                {
+                    Console.WriteLine("Welcome to Drive Simulation");
+                    Console.WriteLine("Let start..");
+                    Vehicle v = new Vehicle();
+
+                    string gear = "";
+                    Console.WriteLine("Instrutions of Drive Simulation\nD--> moveForward\nR--> moveBackward" +
+                                      "\nN--> stop\nExit--> to leave out Drive Simulation");
+                    while (!gear.ToUpper().Equals("EXIT"))
+                    {
+                        Console.WriteLine("Select an option: \n1.D\n2.N\n3.R\n4.EXIT");
+                        gear = Console.ReadLine();
+
+                        if (gear.ToUpper().Equals("D"))
+                        {
+                            // Console.WriteLine(gear);
+                            v.move(gear.ToUpper());
+                        }
+                        else if (gear.ToUpper().Equals("EXIT"))
+                        {
+                            Console.WriteLine("Good bye..");
+                            break;
+                        }
+                        else if (gear.ToUpper().Equals("R"))
+                        {
+                            v.move(gear.ToUpper());
+                        }
+                        else if (gear.ToUpper().Equals("N"))
+                        {
+                            v.move(gear.ToUpper());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid Input ReEnter the displayed options");
+                        }
+                    }
+                }
                 else
                 {
                     Console.WriteLine(
