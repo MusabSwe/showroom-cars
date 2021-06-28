@@ -78,16 +78,6 @@ namespace Task2
 
         public string toString()
         {
-            // b.ConnectToDB();
-            // int j = 0;
-            // for (int i = 0; i < b.wheels.Length; i++)
-            // {
-            //     if (b.wheels[i].tireName.ToLower().Equals(w.ToLower()))
-            //     {
-            //         j = i;
-            //     }
-            // }
-
             if (this.bikeType.ToLower().Equals("bicycle"))
             {
                 return "Specifications for " + name + " bike are:\nnumber of passengers: "
