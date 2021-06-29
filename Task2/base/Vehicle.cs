@@ -2,7 +2,7 @@ using System;
 
 namespace Task2
 {
-    public class Vehicle
+    public class Vehicle : IMove
     {
         public double Price { get; set; }
 
@@ -28,6 +28,27 @@ namespace Task2
 
         public Vehicle()
         {
+        }
+
+        public void turnRight()
+        {
+            Console.WriteLine("Move right");
+        }
+
+        public void turnLeft()
+        {
+            Console.WriteLine("Move left");
+        }
+
+        public void fillColor()
+        {
+            Console.WriteLine("fill vehicle by color ");
+        }
+
+        public string toString()
+        {
+            return "vehicle type is " + vehicleType + ", manufacturer number is " + manufacturerNumber +
+                   ", and model " + model + " and price: " + Price + " SAR";
         }
 
         public void move(string gear)
@@ -69,29 +90,9 @@ namespace Task2
             {
                 Console.WriteLine("Invalid input the gear values should be D, N or R");
             }
+            
         }
-
-        public void turnRight()
-        {
-            Console.WriteLine("Move right");
-        }
-
-        public void turnLeft()
-        {
-            Console.WriteLine("Move left");
-        }
-
-        public void fillColor()
-        {
-            Console.WriteLine("fill vehicle by color ");
-        }
-
-        public string toString()
-        {
-            return "vehicle type is " + vehicleType + ", manufacturer number is " + manufacturerNumber +
-                   ", and model " + model + " and price: " + Price + " SAR";
-        }
-
+        
         public void Main(string userName)
         {
             Console.WriteLine("Hi " + userName + ",");
@@ -130,5 +131,6 @@ namespace Task2
                 }
             }
         }
+        
     }
 }
