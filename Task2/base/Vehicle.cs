@@ -93,7 +93,7 @@ namespace Task2
             
         }
         
-        public void Main(string userName)
+        public void DriveSimulator(string userName)
         {
             Console.WriteLine("Hi " + userName + ",");
             Console.WriteLine("Welcome to Drive Simulation");
