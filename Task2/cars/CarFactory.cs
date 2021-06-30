@@ -39,57 +39,42 @@ namespace Task2
             wheels[5] = new Wheel("Falken", "Japan ", new DateTime(2019, 3, 26), 21);
             wheels[6] = new Wheel("Pirelli", "Korian ", new DateTime(2021, 6, 11), 20);
             wheels[7] = new Wheel("Atlas", "Indian ", new DateTime(2020, 9, 17), 21);
-            /*0*/
-            arrCar.Add(new Car("Camry", 5, 6, 4, engines[0],
-                new Wheel("Okohama", "Japan", new DateTime(2021, 2, 23), 17),
-                new FuelEconomy("Camry", new DateTime(2020, 10, 23), "Green", "Very Good")));
-            /*1*/
-            arrCar.Add(new Car("Sonata", 5, 4, 4, engines[1],
-                new Wheel("Goodyear", "China ", new DateTime(2021, 2, 23), 18),
-                new FuelEconomy("Sonata", new DateTime(2017, 5, 1), "Green", "Good")));
-            /*2*/
-            arrCar.Add(new Car("Hyundai Creta", 7, 6, 4, engines[1],
-                new Wheel("bridgestone", "China ", new DateTime(2021, 2, 23), 19),
-                new FuelEconomy("Hyundai Creta", new DateTime(2019, 10, 23), "Red", "Very Bad")));
-            /*3*/
-            arrCar.Add(new Car("Toyota Fortuner", 7, 4, 4, engines[1],
-                new Wheel("Hankook", "China ", new DateTime(2020, 2, 23), 19),
-                new FuelEconomy("Toyota Fortuner", new DateTime(2018, 5, 1), "Red", "Bad")));
-            /*4*/
-            arrCar.Add(new Car("GMC Safari", 9, 8, 4, engines[2],
-                new Wheel("Pirelli", "Korian ", new DateTime(2021, 6, 11), 20),
-                new FuelEconomy("GMC Safari", new DateTime(2018, 5, 1), "Desil", "Excellent")));
-            // arrCar.Add(new Car("Accent", 5, 4, 4,new EngineType(2, "Regular"),));
         }
 
-        public void Main(string userName)
+        public void CarsShowroom(string userName)
         {
-            string carType = "";
+            int carType = 0;
             CarFactory cars = new CarFactory();
             cars.ConnectToDB();
-            Console.WriteLine("There are 3 types of cars sedan, SUV, and van,\nwhat type do you want?");
-            while (!(carType.ToLower().Equals("sedan") || carType.ToLower().Equals("van") ||
-                     carType.ToLower().Equals("suv")))
+            Console.WriteLine("There are 3 types of cars:\n1.sedan\n2.SUV\n3.van\nSelect a type:");
+            while (!(carType == (int) CarOptions.sedan || carType == (int) CarOptions.suv || carType == (int) CarOptions.van))
             {
-                carType = Console.ReadLine();
-                switch (carType.ToLower())
+                try
                 {
-                    case "sedan":
-                        SedanFactory sedans = new SedanFactory();
-                        sedans.Main(userName);
-                        break;
-                    case "suv":
-                        SUVFactory suvs = new SUVFactory();
-                        suvs.Main(userName);
-                        break;
-                    case "van":
-                        VanFactory vans = new VanFactory();
-                        vans.Main(userName);
-                        break;
-                    default:
-                        Console.WriteLine(
-                            "Invalid car type the car types should be sedan or suv or van.\nReEnter the car type?");
-                        break;
+                    carType = Convert.ToInt32(Console.ReadLine());
+                    switch (carType)
+                    {
+                        case (int)CarOptions.sedan:
+                            SedanFactory sedans = new SedanFactory();
+                            sedans.SedanShowroom(userName);
+                            break;
+                        case (int)CarOptions.suv:
+                            SUVFactory suvs = new SUVFactory();
+                            suvs.SUVShowroom(userName);
+                            break;
+                        case (int)CarOptions.van:
+                            VanFactory vans = new VanFactory();
+                            vans.VanShowroom(userName);
+                            break;
+                        default:
+                            Console.WriteLine(
+                                "Invalid option the option should be a number.\nReEnter the number\n1.sedan\n2.suv\n3.van");
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Invalid option the option should be a number.\nReEnter the number\n1.sedan\n2.suv\n3.van");
                 }
             }
         }
