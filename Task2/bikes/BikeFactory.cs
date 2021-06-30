@@ -39,7 +39,7 @@ namespace Task2
         {
             wheels[0] = new Wheel("Cobra", "German ", new DateTime(2021, 2, 22), 12);
             wheels[1] = new Wheel("Kenda", "America ", new DateTime(2020, 9, 17), 9);
-            
+
             /*0*/
             arrBike.Add(new Bike("Venom", 2, 2, "motor bike", new EngineType(2, "Regular"),
                 new Wheel("Cobra", "German ", new DateTime(2021, 2, 22), 12),
@@ -49,74 +49,95 @@ namespace Task2
                 new Bike("Rambo", 1, 2, "Bicycle", new Wheel("Kenda", "America ", new DateTime(2020, 9, 17), 9)));
         }
 
-        public void Main(string userName)
+        public void BikesShowroom(string userName)
         {
-            //-------------------------Bike var------------------------------------
-            string bikeType = "";
-            string bicycleType = "";
-            string VenomMotor = "";
+            int bikeType = 0;
+            int bicycleType = 0;
+            int VenomMotor = 0;
             BikeFactory bikes = new BikeFactory();
             bikes.ConnectToDB();
             Console.WriteLine("Welcome to bikes market");
-            Console.WriteLine("There are 2 types of bikes Bicycle and Motor Bike,\nwhat type do you want?");
-            while (!(bikeType.ToLower().Equals("bicycle") || bikeType.ToLower().Equals("motor bike")))
+            Console.WriteLine("There are 2 types of bikes \n1.Bicycle\n2.Motor Bike\nSelect a number:");
+            while (!(bikeType == (int) BikeOptions.bicycle || bikeType == (int) BikeOptions.motor))
             {
-                bikeType = Console.ReadLine();
-                if (bikeType.ToLower().Equals("bicycle"))
+                try
                 {
-                    Console.WriteLine("In the bicycles market there is only one type to sell");
-                    while (!bicycleType.ToLower().Equals("rambo"))
+                    bikeType = Convert.ToInt32(Console.ReadLine());
+                    if (bikeType == (int) BikeOptions.bicycle)
                     {
-                        Console.WriteLine("1.Rambo\n2.Exit\nSelect an option?");
-                        bicycleType = Console.ReadLine();
-                        if (bicycleType.ToLower().Equals("rambo"))
+                        Console.WriteLine("In the bicycles market there is only one type to sell");
+                        while (!(bicycleType == (int) bicycleOptions.rambo || bicycleType == (int) bicycleOptions.exit))
                         {
-                            Console.WriteLine("Nice choice " + userName + " to select Rambo bicycle");
+                            try
+                            {
+                                Console.WriteLine("1.Rambo\n2.Exit\nSelect an option?");
+                                bicycleType = Convert.ToInt32(Console.ReadLine());
+                                if (bicycleType == (int) bicycleOptions.rambo)
+                                {
+                                    Console.WriteLine("Nice choice " + userName + " to select Rambo bicycle");
 
-                            Console.WriteLine("This is a summary of your selection:");
-                            Console.WriteLine(bikes.arrBike[1].toString());
-                        }
-                        else if (bicycleType.ToLower().Equals("exit"))
-                        {
-                            Console.WriteLine("Thank you to visit the bicycle market");
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine(
-                                "Invalid option you should select one of the displayed options");
+                                    Console.WriteLine("This is a summary of your selection:");
+                                    Console.WriteLine(bikes.arrBike[1].toString());
+                                }
+                                else if (bicycleType == (int) bicycleOptions.exit)
+                                {
+                                    Console.WriteLine("Thank you to visit the bicycle market");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine(
+                                        "Invalid option you should select one of the displayed options");
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(
+                                    "Invalid option you should select number of the displayed options");
+                            }
                         }
                     }
-                }
-                else if (bikeType.ToLower().Equals("motor bike"))
-                {
-                    Console.WriteLine("Welcome to motor bike market");
-                    Console.WriteLine("In the motor bikes market there is only one type to sell");
-                    while (!VenomMotor.ToLower().Equals("venom"))
+                    else if (bikeType == (int) BikeOptions.motor)
                     {
-                        Console.WriteLine("1.Venom\n2.Exit\nSelect an option?");
-                        VenomMotor = Console.ReadLine();
-                        if (VenomMotor.ToLower().Equals("venom"))
+                        Console.WriteLine("Welcome to motor bike market");
+                        Console.WriteLine("In the motor bikes market there is only one type to sell");
+                        while (!(VenomMotor == (int) MotorOptions.venom || VenomMotor == (int) MotorOptions.exit))
                         {
-                            Console.WriteLine("Nice choice " + userName + " to select Venom motor bike");
+                            try
+                            {
+                                Console.WriteLine("1.Venom\n2.Exit\nSelect an option?");
+                                VenomMotor = Convert.ToInt32(Console.ReadLine());
+                                if (VenomMotor == (int) MotorOptions.venom)
+                                {
+                                    Console.WriteLine("Nice choice " + userName + " to select Venom motor bike");
 
-                            Console.WriteLine("This is a summary of your selection:");
-                            Console.WriteLine(bikes.arrBike[0].toString());
-                        }
-                        else if (VenomMotor.ToLower().Equals("exit"))
-                        {
-                            Console.WriteLine("Thank you to visit the bicycle market");
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid option you should select one of the displayed options");
+                                    Console.WriteLine("This is a summary of your selection:");
+                                    Console.WriteLine(bikes.arrBike[0].toString());
+                                }
+                                else if (VenomMotor == (int) MotorOptions.exit)
+                                {
+                                    Console.WriteLine("Thank you to visit the bicycle market");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid option you should select one of the displayed options");
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Invalid option you should select number of the displayed options");
+                            }
                         }
                     }
+                    else
+                    {
+                        Console.WriteLine("Invalid input, you should select number either Bicycle or motor bike");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine("Invalid input, you should select one either Bicycle or motor bike");
+                    Console.WriteLine("Invalid input, you should select number either Bicycle or motor bike");
                 }
             }
         }
