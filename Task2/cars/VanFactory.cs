@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Task2
@@ -44,65 +44,86 @@ namespace Task2
                 new FuelEconomy("GMC Safari", new DateTime(2018, 5, 1), "Desil", "Excellent")));
         }
 
-        public void Main(string userName)
+        public void VanShowroom(string userName)
         {
-            //-------------------------Van var------------------------------------- 
-            string vanCar = "";
-            string GMCWheel = "";
+            int vanCar = 0;
+            int GMCWheel = 0;
+            string w1 = "";
             VanFactory vans = new VanFactory();
             vans.ConnectToDB();
             Console.WriteLine("----------------van car showroom--------------------");
             Console.WriteLine("In van cars showroom there is only one car to sell");
-            while (!vanCar.ToLower().Equals("gmc safari"))
+            while (vanCar != (int) VanOptions.gmc)
             {
-                Console.WriteLine("1.GMC Safari\n2.Exit\nSelect an option?");
-                vanCar = Console.ReadLine();
-                if (vanCar.ToLower().Equals("gmc safari"))
+                try
                 {
-                    Console.WriteLine("Nice choice " + userName + " to select GMC Safari car");
-                    Console.WriteLine("GMC Safari has 3 types of wheels, select one:");
-                    Console.WriteLine("1." + vans.wheels[5].tireName);
-                    Console.WriteLine("2." + vans.wheels[6].tireName);
-                    Console.WriteLine("3." + vans.wheels[7].tireName);
-                    while (!(GMCWheel.ToLower().Equals(vans.wheels[5].tireName.ToLower()) ||
-                             GMCWheel.ToLower().Equals(vans.wheels[6].tireName.ToLower()) ||
-                             GMCWheel.ToLower().Equals(vans.wheels[7].tireName.ToLower())))
+                    Console.WriteLine("1.GMC Safari\n2.Exit\nSelect an option?");
+                    vanCar = Convert.ToInt32(Console.ReadLine());
+                    if (vanCar == (int) VanOptions.gmc)
                     {
-                        GMCWheel = Console.ReadLine();
-                        if (GMCWheel.ToLower().Equals(vans.wheels[5].tireName.ToLower()))
+                        Console.WriteLine("Nice choice " + userName + " to select GMC Safari car");
+                        Console.WriteLine("GMC Safari has 3 types of wheels, select one:");
+                        Console.WriteLine("1." + vans.wheels[5].tireName);
+                        Console.WriteLine("2." + vans.wheels[6].tireName);
+                        Console.WriteLine("3." + vans.wheels[7].tireName);
+                        while (!(GMCWheel == (int) GMCWheel1.Falken ||
+                                 GMCWheel == (int) GMCWheel1.Pirelli ||
+                                 GMCWheel == (int) GMCWheel1.Atlas))
                         {
-                            Console.WriteLine("Great choice to select " + GMCWheel + " tire");
+                            try
+                            {
+                                GMCWheel = Convert.ToInt32(Console.ReadLine());
+                                if (GMCWheel == (int) GMCWheel1.Falken)
+                                {
+                                    Console.WriteLine("Great choice to select " + vans.wheels[5].tireName + " tire");
+                                    w1 = vans.wheels[5].tireName;
+                                }
+                                else if (GMCWheel == (int) GMCWheel1.Pirelli)
+                                {
+                                    Console.WriteLine("Great choice to select " + vans.wheels[6].tireName + " tire");
+                                    w1 = vans.wheels[6].tireName;
+                                }
+                                else if (GMCWheel == (int) GMCWheel1.Atlas)
+                                {
+                                    Console.WriteLine("Great choice to select " + vans.wheels[7].tireName + " tire");
+                                    w1 = vans.wheels[7].tireName;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid Option you should select a number:\n1." +
+                                                      vans.wheels[5].tireName + "\n2." +
+                                                      vans.wheels[6].tireName + "\n3." +
+                                                      vans.wheels[7].tireName);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Invalid Option you should select a number:\n1." +
+                                                  vans.wheels[5].tireName + "\n2." +
+                                                  vans.wheels[6].tireName + "\n3." +
+                                                  vans.wheels[7].tireName);
+                            }
                         }
-                        else if (GMCWheel.ToLower().Equals(vans.wheels[6].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice to select " + GMCWheel + " tire");
-                        }
-                        else if (GMCWheel.ToLower().Equals(vans.wheels[7].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice to select " + GMCWheel + " tire");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Option you should select one either " +
-                                              vans.wheels[5].tireName + " or " +
-                                              vans.wheels[6].tireName + " or " +
-                                              vans.wheels[7].tireName);
-                        }
-                    }
 
-                    Console.WriteLine("This is a summary of your selection:");
-                    Console.WriteLine(vans.arrVan[0]
-                        .toString(GMCWheel, vans.engines[2].EngineName));
+                        Console.WriteLine("This is a summary of your selection:");
+                        Console.WriteLine(vans.arrVan[0]
+                            .toString(w1, vans.engines[2].EngineName));
+                    }
+                    else if (vanCar == (int) VanOptions.exit)
+                    {
+                        Console.WriteLine("Thank you to visit the van showroom");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine(
+                            "Invalid option you should select number of the displayed options");
+                    }
                 }
-                else if (vanCar.ToLower().Equals("exit"))
-                {
-                    Console.WriteLine("Thank you to visit the van showroom");
-                    break;
-                }
-                else
+                catch (Exception e)
                 {
                     Console.WriteLine(
-                        "Invalid option you should select one of the displayed options");
+                        "Invalid option you should select number of the displayed options");
                 }
             }
         }
