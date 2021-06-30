@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Task2
@@ -48,90 +48,116 @@ namespace Task2
                 new FuelEconomy("Toyota Fortuner", new DateTime(2018, 5, 1), "Red", "Bad")));
         }
 
-        public void Main(string userName)
+        public void SUVShowroom(string userName)
         {
-            //--------------------------SUV var------------------------------------
-            string suvCar = "";
-            string hyundaiCretaWheel = "";
-            string FortunerWheel = "";
+            int suvCar = 0;
+            int hyundaiCretaWheel = 0;
+            int FortunerWheel = 0;
             SUVFactory suvs = new SUVFactory();
             suvs.ConnectToDB();
 
             Console.WriteLine("----------------suv car showroom--------------------");
             Console.WriteLine("In SUV cars showroom there are two cars to sell");
-            while (!(suvCar.ToLower().Equals("hyundai creta") ||
-                     suvCar.ToLower().Equals("toyota fortuner")))
+            string w1 = "";
+            while (!(suvCar == (int) SUVOptions.creta || suvCar == (int) SUVOptions.fortuner))
             {
-                Console.WriteLine("1.Hyundai Creta\n2.Toyota Fortuner\nSelect a car?");
-                suvCar = Console.ReadLine();
-                if (suvCar.ToLower().Equals("hyundai creta"))
+                try
                 {
-                    Console.WriteLine("Nice choice " + userName + " to select Hyundai Creta car");
-                    Console.WriteLine("Hyundai Creta has 2 two types of wheels, select one:");
-                    Console.WriteLine("1." + suvs.wheels[3].tireName);
-                    Console.WriteLine("2." + suvs.wheels[4].tireName);
-
-                    while (!(hyundaiCretaWheel.ToLower().Equals(suvs.wheels[3].tireName.ToLower()) ||
-                             hyundaiCretaWheel.ToLower().Equals(suvs.wheels[4].tireName.ToLower())))
+                    Console.WriteLine("1.Hyundai Creta\n2.Toyota Fortuner\nSelect a car?");
+                    suvCar = Convert.ToInt32(Console.ReadLine());
+                    if (suvCar == (int) SUVOptions.creta)
                     {
-                        hyundaiCretaWheel = Console.ReadLine();
-                        if (hyundaiCretaWheel.ToLower().Equals(suvs.wheels[3].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice to select " + hyundaiCretaWheel +
-                                              " tire");
-                        }
-                        else if (hyundaiCretaWheel.ToLower()
-                            .Equals(suvs.wheels[4].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice to select " + hyundaiCretaWheel +
-                                              " tire");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Option you should select one either " +
-                                              suvs.wheels[3].tireName + " or " +
-                                              suvs.wheels[4].tireName);
-                            Console.WriteLine("You are writing " + hyundaiCretaWheel + "\nWheel: " +
-                                              suvs.wheels[4].tireName);
-                        }
-                    }
+                        Console.WriteLine("Nice choice " + userName + " to select Hyundai Creta car");
+                        Console.WriteLine("Hyundai Creta has 2 two types of wheels, select one:");
+                        Console.WriteLine("1." + suvs.wheels[3].tireName);
+                        Console.WriteLine("2." + suvs.wheels[4].tireName);
 
-                    Console.WriteLine("This is a summary of your selection:");
-                    Console.WriteLine(suvs.arrSUV[0].toString(hyundaiCretaWheel));
-                }
-                else if (suvCar.ToLower().Equals("toyota fortuner"))
-                {
-                    Console.WriteLine("Nice choice " + userName + " to select Toyota Fortuner car");
-                    Console.WriteLine("Toyota Fortuner has 2 two types of wheels, select one:");
-                    Console.WriteLine("1." + suvs.wheels[4].tireName);
-                    Console.WriteLine("2." + suvs.wheels[1].tireName);
-                    while (!(FortunerWheel.ToLower().Equals(suvs.wheels[4].tireName.ToLower()) ||
-                             FortunerWheel.ToLower().Equals(suvs.wheels[1].tireName.ToLower())))
+                        while (!(hyundaiCretaWheel == (int) CretaWheel.Goodyear ||
+                                 hyundaiCretaWheel == (int) CretaWheel.bridgestone))
+                        {
+                            try
+                            {
+                                hyundaiCretaWheel = Convert.ToInt32(Console.ReadLine());
+                                if (hyundaiCretaWheel == (int) CretaWheel.Goodyear)
+                                {
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[3].tireName +
+                                                      " tire");
+                                    w1 = suvs.wheels[3].tireName;
+                                }
+                                else if (hyundaiCretaWheel == (int) CretaWheel.bridgestone)
+                                {
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[4].tireName +
+                                                      " tire");
+                                    w1 = suvs.wheels[4].tireName;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid Option you should select a number:\n1." +
+                                                      suvs.wheels[3].tireName + "\n2." +
+                                                      suvs.wheels[4].tireName);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Invalid Option you should select a number:\n1." +
+                                                  suvs.wheels[3].tireName + "\n2." +
+                                                  suvs.wheels[4].tireName);
+                            }
+                        }
+
+                        Console.WriteLine("This is a summary of your selection:");
+                        Console.WriteLine(suvs.arrSUV[0].toString(w1));
+                    }
+                    else if (suvCar == (int) SUVOptions.fortuner)
                     {
-                        FortunerWheel = Console.ReadLine();
-                        if (FortunerWheel.ToLower().Equals(suvs.wheels[4].tireName.ToLower()))
+                        Console.WriteLine("Nice choice " + userName + " to select Toyota Fortuner car");
+                        Console.WriteLine("Toyota Fortuner has 2 two types of wheels, select one:");
+                        Console.WriteLine("1." + suvs.wheels[4].tireName);
+                        Console.WriteLine("2." + suvs.wheels[1].tireName);
+                        string w2 = "";
+                        while (!(FortunerWheel == (int) FortunerWheel1.bridgestone ||
+                                 FortunerWheel == (int) FortunerWheel1.Hankook))
                         {
-                            Console.WriteLine("Great choice to select " + FortunerWheel + " tire");
+                            try
+                            {
+                                FortunerWheel = Convert.ToInt32(Console.ReadLine());
+                                if (FortunerWheel == (int) FortunerWheel1.bridgestone)
+                                {
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[4].tireName + " tire");
+                                    w2 = suvs.wheels[4].tireName;
+                                }
+                                else if (FortunerWheel == (int) FortunerWheel1.Hankook)
+                                {
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[1].tireName + " tire");
+                                    w2 = suvs.wheels[1].tireName;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid Option you should select one either " +
+                                                      suvs.wheels[4].tireName + " or " +
+                                                      suvs.wheels[1].tireName);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Invalid Option you should select a number:\n1." +
+                                                  suvs.wheels[4].tireName + "\n2." +
+                                                  suvs.wheels[1].tireName);
+                            }
                         }
-                        else if (FortunerWheel.ToLower().Equals(suvs.wheels[1].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice to select " + FortunerWheel + " tire");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Option you should select one either " +
-                                              suvs.wheels[4].tireName + " or " +
-                                              suvs.wheels[1].tireName);
-                        }
-                    }
 
-                    Console.WriteLine("This is a summary of your selection:");
-                    Console.WriteLine(suvs.arrSUV[1].toString(FortunerWheel));
+                        Console.WriteLine("This is a summary of your selection:");
+                        Console.WriteLine(suvs.arrSUV[1].toString(w2));
+                    }
+                    else
+                    {
+                        Console.WriteLine(
+                            "Invalid option you should select number of the displayed cars in showroom");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine(
-                        "Invalid option you should select one of the displayed cars in showroom");
+                    Console.WriteLine("Invalid option you should select number of the displayed cars in showroom");
                 }
             }
         }
