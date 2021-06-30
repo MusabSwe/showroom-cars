@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Task2
@@ -47,118 +47,156 @@ namespace Task2
                 new FuelEconomy("Sonata", new DateTime(2017, 5, 1), "Green", "Good")));
         }
 
-        public void Main(string userName)
+        public void SedanShowroom(string userName)
         {
-            string sedanCar = "";
-            string camryEngine = "";
-            string camryWheel = "";
-            string sonataWheel = "";
+            int sedanCar = 0;
+            int camryEngine = 0;
+            int camryWheel = 0;
+            int sonataWheel = 0;
             SedanFactory sedan = new SedanFactory();
             sedan.ConnectToDB();
             Console.WriteLine("----------------sedan cars showroom--------------------");
-            Console.WriteLine(sedan.arrSedan[0].wheel.tireName + " I'm Here");
             Console.WriteLine("In sedan cars showroom there are two cars to sell");
-            while (!(sedanCar.ToLower().Equals("camry") || sedanCar.ToLower().Equals("sonata")))
+            while (!(sedanCar == (int) SedanOptions.camry || sedanCar == (int) SedanOptions.sonata))
             {
-                Console.WriteLine("1.Camry\n2.Sonata\nSelect a car?");
-                sedanCar = Console.ReadLine();
-                if (sedanCar.ToLower().Equals("camry"))
+                try
                 {
-                    Console.WriteLine("Nice choice " + userName +
-                                      " so, after you select the car there are 2 engines for Camry which one do you want?");
+                    Console.WriteLine("1.Camry\n2.Sonata\nSelect a car?");
 
-                    Console.WriteLine("1." + sedan.arrSedan[0].engine.EngineName);
-                    Console.WriteLine("2." + sedan.arrSedan[1].engine.EngineName);
-                    while (!(camryEngine.ToLower()
-                                 .Equals(sedan.arrSedan[0].engine.EngineName.ToLower()) ||
-                             camryEngine.ToLower()
-                                 .Equals(sedan.arrSedan[1].engine.EngineName.ToLower())))
+                    sedanCar = Convert.ToInt32(Console.ReadLine());
+
+                    if (sedanCar == (int) SedanOptions.camry)
                     {
-                        camryEngine = Console.ReadLine();
-                        if (camryEngine.ToLower()
-                            .Equals(sedan.arrSedan[0].engine.EngineName.ToLower()))
+                        Console.WriteLine("Nice choice " + userName +
+                                          " so, after you select the car there are 2 engines for Camry which one do you want?");
+
+                        Console.WriteLine("1." + sedan.arrSedan[0].engine.EngineName);
+                        Console.WriteLine("2." + sedan.arrSedan[1].engine.EngineName);
+                        string e1 = "";
+                        while (!(camryEngine == (int) CamryEngines.hybrid || camryEngine == (int) CamryEngines.regular))
                         {
-                            Console.WriteLine("Great choice for " + camryEngine + " engine");
+                            try
+                            {
+                                camryEngine = Convert.ToInt32(Console.ReadLine());
+                                if (camryEngine == (int) CamryEngines.hybrid)
+                                {
+                                    Console.WriteLine("Great choice for " + CamryEngines.hybrid + " engine");
+                                    e1 = "Hybrid";
+                                }
+                                else if (camryEngine == (int) CamryEngines.regular)
+                                {
+                                    Console.WriteLine("Great choice for " + CamryEngines.regular + " engine");
+                                    e1 = "Regular";
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid Option you should select one either " +
+                                                      sedan.arrSedan[0].engine.EngineName + " or " +
+                                                      sedan.arrSedan[1].engine.EngineName);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Invalid Option you should select a number either " +
+                                                  sedan.arrSedan[0].engine.EngineName + " or " +
+                                                  sedan.arrSedan[1].engine.EngineName);
+                            }
                         }
-                        else if (camryEngine.ToLower()
-                            .Equals(sedan.arrSedan[1].engine.EngineName.ToLower()))
+
+
+                        Console.WriteLine("Nice choice " + userName + " so, after you select " +
+                                          e1 +
+                                          " engine there are 2 types of tires for Camry which one do you want?");
+
+                        Console.WriteLine("1." + sedan.arrSedan[0].wheel.tireName);
+                        Console.WriteLine("2." + sedan.wheels[1].tireName);
+                        string w1 = "";
+
+                        while (!(camryWheel == (int) CamryWheel.Okohama || camryWheel == (int) CamryWheel.Hankook))
                         {
-                            Console.WriteLine("Great choice for " + camryEngine + " engine");
+                            try
+                            {
+                                camryWheel = Convert.ToInt32(Console.ReadLine());
+                                if (camryWheel == (int) CamryWheel.Okohama)
+                                {
+                                    Console.WriteLine("Great choice for " + CamryWheel.Okohama + " tire");
+                                    w1 = "Okohama";
+                                }
+                                else if (camryWheel == (int) CamryWheel.Hankook)
+                                {
+                                    Console.WriteLine("Great choice for " + CamryWheel.Hankook + " tire");
+                                    w1 = "Hankook";
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid Option you should select a number either " +
+                                                      sedan.arrSedan[0].wheel.tireName + " or " +
+                                                      sedan.wheels[1].tireName);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Invalid Option you should select a number either " +
+                                                  sedan.arrSedan[0].wheel.tireName + " or " +
+                                                  sedan.wheels[1].tireName);
+                            }
                         }
-                        else
-                        {
-                            Console.WriteLine("Invalid Option you should select one either " +
-                                              sedan.arrSedan[0].engine.EngineName + " or " +
-                                              sedan.arrSedan[1].engine.EngineName);
-                        }
+
+                        Console.WriteLine("This is a summary of your selection:");
+                        Console.WriteLine(sedan.arrSedan[0].toString(w1, e1));
                     }
-
-
-                    Console.WriteLine("Nice choice " + userName + " so, after you select " +
-                                      camryEngine +
-                                      " engine there are 2 types of tires for Camry which one do you want?");
-
-                    Console.WriteLine("1." + sedan.arrSedan[0].wheel.tireName);
-                    Console.WriteLine("2." + sedan.wheels[1].tireName);
-                    while (!(camryWheel.ToLower().Equals(sedan.arrSedan[0].wheel.tireName.ToLower()) ||
-                             camryWheel.ToLower().Equals(sedan.wheels[1].tireName.ToLower())))
+                    else if (sedanCar == (int) SedanOptions.sonata)
                     {
-                        camryWheel = Console.ReadLine();
-                        if (camryWheel.ToLower().Equals(sedan.arrSedan[0].wheel.tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice for " + camryWheel + " tire");
-                        }
-                        else if (camryWheel.ToLower()
-                            .Equals(sedan.wheels[1].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice for " + camryWheel + " tire");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Option you should select one either " +
-                                              sedan.arrSedan[0].wheel.tireName + " or " +
-                                              sedan.wheels[1].tireName);
-                        }
-                    }
+                        string w2 = "";
+                        Console.WriteLine("Nice choice " + userName + " to select sonata car");
+                        Console.WriteLine("Sonata has 2 two types of wheels, select one:");
+                        Console.WriteLine("1." + sedan.wheels[3].tireName);
+                        Console.WriteLine("2." + sedan.wheels[2].tireName);
 
-                    Console.WriteLine("This is a summary of your selection:");
-                    Console.WriteLine(sedan.arrSedan[0].toString(camryWheel, camryEngine));
+                        while (!(sonataWheel == (int) SonataWheel.Goodyear ||
+                                 sonataWheel == (int) SonataWheel.Firestone))
+                        {
+                            try
+                            {
+                                sonataWheel = Convert.ToInt32(Console.ReadLine());
+                                if (sonataWheel == (int) SonataWheel.Goodyear)
+                                {
+                                    Console.WriteLine("Great choice for " + sedan.wheels[3].tireName +
+                                                      " tire");
+                                    w2 = "Goodyear";
+                                }
+                                else if (sonataWheel == (int) SonataWheel.Firestone)
+                                {
+                                    Console.WriteLine("Great choice for " + sedan.wheels[2].tireName +
+                                                      " tire");
+                                    w2 = "Firestone";
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid Option you should select a number:\n1." +
+                                                      sedan.wheels[3].tireName + "\n2." +
+                                                      sedan.wheels[2].tireName);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine("Invalid Option you should select a number:\n1." +
+                                                  sedan.wheels[3].tireName + "\n2." +
+                                                  sedan.wheels[2].tireName);
+                            }
+                        }
+
+                        Console.WriteLine("This is a summary of your selection:");
+                        Console.WriteLine(sedan.arrSedan[1].toString(w2));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid option, Select a number of the displayed cars");
+                    }
                 }
-                else if (sedanCar.ToLower().Equals("sonata"))
+                catch (Exception e)
                 {
-                    Console.WriteLine("Nice choice " + userName + " to select sonata car");
-                    Console.WriteLine("Sonata has 2 two types of wheels, select one:");
-                    Console.WriteLine("1." + sedan.wheels[3].tireName);
-                    Console.WriteLine("2." + sedan.wheels[2].tireName);
-
-                    while (!(sonataWheel.ToLower().Equals(sedan.wheels[3].tireName.ToLower()) ||
-                             sonataWheel.ToLower().Equals(sedan.wheels[2].tireName.ToLower())))
-                    {
-                        sonataWheel = Console.ReadLine();
-                        if (sonataWheel.ToLower().Equals(sedan.wheels[3].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice for " + sedan.wheels[3].tireName +
-                                              " tire");
-                        }
-                        else if (sonataWheel.ToLower().Equals(sedan.wheels[2].tireName.ToLower()))
-                        {
-                            Console.WriteLine("Great choice for " + sedan.wheels[2].tireName +
-                                              " tire");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Invalid Option you should select one either " +
-                                              sedan.wheels[3].tireName + " or " +
-                                              sedan.wheels[2].tireName);
-                        }
-                    }
-
-                    Console.WriteLine("This is a summary of your selection:");
-                    Console.WriteLine(sedan.arrSedan[1].toString(sonataWheel));
-                }
-                else
-                {
-                    Console.WriteLine("Invalid option, Select one of the displayed cars");
+                    Console.WriteLine("Invalid option, Select a number of the displayed cars");
                 }
             }
         }
