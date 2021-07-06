@@ -6,7 +6,7 @@ namespace Task2
     public class VanFactory
     {
         public List<Van> arrVan = new List<Van>();
-        public EngineType[] engines = new EngineType[3];
+        public Engine[] engines = new Engine[3];
         public Wheel[] wheels = new Wheel[8];
 
         public VanFactory(List<Van> arr)
@@ -20,14 +20,14 @@ namespace Task2
 
         public void AddSedanCar(Van a)
         {
-            arrVan.Add(new Van(a.name, a.passengerNum, a.numberOfCylinders, a.numberOfDoors, a.engine, a.wheel));
+            arrVan.Add(new Van(a.Name, a.PassengerNum, a.NumberOfCylinders, a.NumberOfDoors, a.Engines, a.Wheel));
         }
 
         public void ConnectToDB()
         {
-            engines[0] = new EngineType(1, "Hybrid");
-            engines[1] = new EngineType(2, "Regular");
-            engines[2] = new EngineType(3, "Diesel Engine");
+            engines[0] = new Engine(1, "Hybrid");
+            engines[1] = new Engine(2, "Regular");
+            engines[2] = new Engine(3, "Diesel Engine");
 
             wheels[0] = new Wheel("Okohama", "Japan", new DateTime(2021, 2, 23), 17);
             wheels[1] = new Wheel("Hankook", "China", new DateTime(2021, 4, 17), 16);
@@ -63,9 +63,9 @@ namespace Task2
                     {
                         Console.WriteLine("Nice choice " + userName + " to select GMC Safari car");
                         Console.WriteLine("GMC Safari has 3 types of wheels, select one:");
-                        Console.WriteLine("1." + vans.wheels[5].tireName);
-                        Console.WriteLine("2." + vans.wheels[6].tireName);
-                        Console.WriteLine("3." + vans.wheels[7].tireName);
+                        Console.WriteLine("1." + vans.wheels[5].TireName);
+                        Console.WriteLine("2." + vans.wheels[6].TireName);
+                        Console.WriteLine("3." + vans.wheels[7].TireName);
                         while (!(GMCWheel == (int) GMCWheel1.Falken ||
                                  GMCWheel == (int) GMCWheel1.Pirelli ||
                                  GMCWheel == (int) GMCWheel1.Atlas))
@@ -75,33 +75,33 @@ namespace Task2
                                 GMCWheel = Convert.ToInt32(Console.ReadLine());
                                 if (GMCWheel == (int) GMCWheel1.Falken)
                                 {
-                                    Console.WriteLine("Great choice to select " + vans.wheels[5].tireName + " tire");
-                                    w1 = vans.wheels[5].tireName;
+                                    Console.WriteLine("Great choice to select " + vans.wheels[5].TireName + " tire");
+                                    w1 = vans.wheels[5].TireName;
                                 }
                                 else if (GMCWheel == (int) GMCWheel1.Pirelli)
                                 {
-                                    Console.WriteLine("Great choice to select " + vans.wheels[6].tireName + " tire");
-                                    w1 = vans.wheels[6].tireName;
+                                    Console.WriteLine("Great choice to select " + vans.wheels[6].TireName + " tire");
+                                    w1 = vans.wheels[6].TireName;
                                 }
                                 else if (GMCWheel == (int) GMCWheel1.Atlas)
                                 {
-                                    Console.WriteLine("Great choice to select " + vans.wheels[7].tireName + " tire");
-                                    w1 = vans.wheels[7].tireName;
+                                    Console.WriteLine("Great choice to select " + vans.wheels[7].TireName + " tire");
+                                    w1 = vans.wheels[7].TireName;
                                 }
                                 else
                                 {
                                     Console.WriteLine("Invalid Option you should select a number:\n1." +
-                                                      vans.wheels[5].tireName + "\n2." +
-                                                      vans.wheels[6].tireName + "\n3." +
-                                                      vans.wheels[7].tireName);
+                                                      vans.wheels[5].TireName + "\n2." +
+                                                      vans.wheels[6].TireName + "\n3." +
+                                                      vans.wheels[7].TireName);
                                 }
                             }
                             catch (Exception e)
                             {
                                 Console.WriteLine("Invalid Option you should select a number:\n1." +
-                                                  vans.wheels[5].tireName + "\n2." +
-                                                  vans.wheels[6].tireName + "\n3." +
-                                                  vans.wheels[7].tireName);
+                                                  vans.wheels[5].TireName + "\n2." +
+                                                  vans.wheels[6].TireName + "\n3." +
+                                                  vans.wheels[7].TireName);
                             }
                         }
 
