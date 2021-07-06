@@ -8,7 +8,7 @@ namespace Task2
     public class CarFactory
     {
         public List<Car> arrCar = new List<Car>();
-        public EngineType[] engines = new EngineType[3];
+        public Engine [] engines = new Engine[3];
         public Wheel[] wheels = new Wheel[8];
 
         public CarFactory(List<Car> arr)
@@ -22,14 +22,14 @@ namespace Task2
 
         public void AddCar(Car a)
         {
-            arrCar.Add(new Car(a.name, a.passengerNum, a.numberOfCylinders, a.numberOfDoors, a.engine, a.wheel));
+            arrCar.Add(new Car(a.Name, a.PassengerNum, a.NumberOfCylinders, a.NumberOfDoors, a.Engines, a.Wheel));
         }
 
         public void ConnectToDB()
         {
-            engines[0] = new EngineType(1, "Hybrid");
-            engines[1] = new EngineType(2, "Regular");
-            engines[2] = new EngineType(3, "Diesel Engine");
+            engines[0] = new Engine(1, "Hybrid");
+            engines[1] = new Engine(2, "Regular");
+            engines[2] = new Engine(3, "Diesel Engine");
 
             wheels[0] = new Wheel("Okohama", "Japan", new DateTime(2021, 2, 23), 17);
             wheels[1] = new Wheel("Hankook", "China", new DateTime(2021, 4, 17), 16);
