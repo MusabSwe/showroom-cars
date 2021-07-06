@@ -5,32 +5,34 @@ namespace Task2
 {
     public class Bike
     {
-        public string name { get; set; }
+        public int BikeId { get; set; }
+        
+        public string Name { get; set; }
 
-        public int passengerNum { get; set; }
+        public int PassengerNum { get; set; }
 
-        public int numberOfWheels { get; set; }
+        public int NumberOfWheels { get; set; }
 
-        public string bikeType { get; set; }
+        public string BikeType { get; set; }
 
-        public Wheel wheel = new Wheel();
+        public Wheel Wheel = new Wheel();
 
-        public EngineType engine = new EngineType();
-        public FuelEconomy fuelEcon = new FuelEconomy();
+        public Engine Engines = new Engine();
+        public FuelEconomy FuelEcon = new FuelEconomy();
         public BikeFactory b = new BikeFactory();
 
-        public Bike(string name, int passengerNum, int numOfWheels, string bikeType, EngineType e, Wheel w,
+        public Bike(string name, int passengerNum, int numOfWheels, string bikeType, Engine e, Wheel w,
             FuelEconomy f)
         {
             if (passengerNum > 0 && numOfWheels > 0)
             {
-                this.name = name;
-                this.passengerNum = passengerNum;
-                this.numberOfWheels = numOfWheels;
-                this.bikeType = bikeType;
-                this.engine = e;
-                this.wheel = w;
-                this.fuelEcon = f;
+                this.Name = name;
+                this.PassengerNum = passengerNum;
+                this.NumberOfWheels = numOfWheels;
+                this.BikeType = bikeType;
+                this.Engines = e;
+                this.Wheel = w;
+                this.FuelEcon = f;
             }
             else
             {
@@ -42,11 +44,11 @@ namespace Task2
         {
             if (passengerNum > 0 && numOfWheels > 0)
             {
-                this.name = name;
-                this.passengerNum = passengerNum;
-                this.numberOfWheels = numOfWheels;
-                this.bikeType = bikeType;
-                this.wheel = w;
+                this.Name = name;
+                this.PassengerNum = passengerNum;
+                this.NumberOfWheels = numOfWheels;
+                this.BikeType = bikeType;
+                this.Wheel = w;
             }
             else
             {
@@ -54,16 +56,16 @@ namespace Task2
             }
         }
 
-        public Bike(string name, int passengerNum, int numOfWheels, string bikeType, EngineType e, Wheel w)
+        public Bike(string name, int passengerNum, int numOfWheels, string bikeType, Engine e, Wheel w)
         {
             if (passengerNum > 0 && numOfWheels > 0)
             {
-                this.name = name;
-                this.passengerNum = passengerNum;
-                this.numberOfWheels = numOfWheels;
-                this.bikeType = bikeType;
-                this.engine = e;
-                this.wheel = w;
+                this.Name = name;
+                this.PassengerNum = passengerNum;
+                this.NumberOfWheels = numOfWheels;
+                this.BikeType = bikeType;
+                this.Engines = e;
+                this.Wheel = w;
             }
             else
             {
@@ -75,20 +77,19 @@ namespace Task2
         {
         }
 
-
         public string toString()
         {
-            if (this.bikeType.ToLower().Equals("bicycle"))
+            if (this.BikeType.ToLower().Equals("bicycle"))
             {
-                return "Specifications for " + name + " bike are:\nnumber of passengers: "
-                       + passengerNum + "\nnumber of wheels: " + numberOfWheels + "\nbike type: " + bikeType
-                       + "\n" + wheel.toString();
+                return "Specifications for " + Name + " bike are:\nnumber of passengers: "
+                       + PassengerNum + "\nnumber of wheels: " + NumberOfWheels + "\nbike type: " + BikeType
+                       + "\n" + Wheel.toString();
             }
             else
             {
-                return "Specifications for " + name + " bike are:\nnumber of passengers: "
-                       + passengerNum + "\nnumber of wheels: " + numberOfWheels + "\nbike type: " + bikeType
-                       + "\nThe engine type is Regular\n" + wheel.toString();
+                return "Specifications for " + Name + " bike are:\nnumber of passengers: "
+                       + PassengerNum + "\nnumber of wheels: " + NumberOfWheels + "\nbike type: " + BikeType
+                       + "\nThe engine type is Regular\n" + Wheel.toString();
             }
         }
     }
