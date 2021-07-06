@@ -6,7 +6,7 @@ namespace Task2
     public class SedanFactory
     {
         public List<Sedan> arrSedan = new List<Sedan>();
-        public EngineType[] engines = new EngineType[3];
+        public Engine [] engines = new Engine[3];
         public Wheel[] wheels = new Wheel[8];
 
         public SedanFactory(List<Sedan> arr)
@@ -20,14 +20,14 @@ namespace Task2
 
         public void AddSedanCar(Sedan a)
         {
-            arrSedan.Add(new Sedan(a.name, a.passengerNum, a.numberOfCylinders, a.numberOfDoors, a.engine, a.wheel));
+            arrSedan.Add(new Sedan(a.Name, a.PassengerNum, a.NumberOfCylinders, a.NumberOfDoors, a.Engines, a.Wheel));
         }
 
         public void ConnectToDB()
         {
-            engines[0] = new EngineType(1, "Hybrid");
-            engines[1] = new EngineType(2, "Regular");
-            engines[2] = new EngineType(3, "Diesel Engine");
+            engines[0] = new Engine(1, "Hybrid");
+            engines[1] = new Engine(2, "Regular");
+            engines[2] = new Engine(3, "Diesel Engine");
 
             wheels[0] = new Wheel("Okohama", "Japan", new DateTime(2021, 2, 23), 17);
             wheels[1] = new Wheel("Hankook", "China", new DateTime(2021, 4, 17), 16);
@@ -70,8 +70,8 @@ namespace Task2
                         Console.WriteLine("Nice choice " + userName +
                                           " so, after you select the car there are 2 engines for Camry which one do you want?");
 
-                        Console.WriteLine("1." + sedan.arrSedan[0].engine.EngineName);
-                        Console.WriteLine("2." + sedan.arrSedan[1].engine.EngineName);
+                        Console.WriteLine("1." + sedan.arrSedan[0].Engines.EngineName);
+                        Console.WriteLine("2." + sedan.arrSedan[1].Engines.EngineName);
                         string e1 = "";
                         while (!(camryEngine == (int) CamryEngines.hybrid || camryEngine == (int) CamryEngines.regular))
                         {
@@ -91,15 +91,15 @@ namespace Task2
                                 else
                                 {
                                     Console.WriteLine("Invalid Option you should select one either " +
-                                                      sedan.arrSedan[0].engine.EngineName + " or " +
-                                                      sedan.arrSedan[1].engine.EngineName);
+                                                      sedan.arrSedan[0].Engines.EngineName + " or " +
+                                                      sedan.arrSedan[1].Engines.EngineName);
                                 }
                             }
                             catch (Exception e)
                             {
                                 Console.WriteLine("Invalid Option you should select a number either " +
-                                                  sedan.arrSedan[0].engine.EngineName + " or " +
-                                                  sedan.arrSedan[1].engine.EngineName);
+                                                  sedan.arrSedan[0].Engines.EngineName + " or " +
+                                                  sedan.arrSedan[1].Engines.EngineName);
                             }
                         }
 
@@ -108,8 +108,8 @@ namespace Task2
                                           e1 +
                                           " engine there are 2 types of tires for Camry which one do you want?");
 
-                        Console.WriteLine("1." + sedan.arrSedan[0].wheel.tireName);
-                        Console.WriteLine("2." + sedan.wheels[1].tireName);
+                        Console.WriteLine("1." + sedan.arrSedan[0].Wheel.TireName);
+                        Console.WriteLine("2." + sedan.wheels[1].TireName);
                         string w1 = "";
 
                         while (!(camryWheel == (int) CamryWheel.Okohama || camryWheel == (int) CamryWheel.Hankook))
@@ -130,15 +130,15 @@ namespace Task2
                                 else
                                 {
                                     Console.WriteLine("Invalid Option you should select a number either " +
-                                                      sedan.arrSedan[0].wheel.tireName + " or " +
-                                                      sedan.wheels[1].tireName);
+                                                      sedan.arrSedan[0].Wheel.TireName + " or " +
+                                                      sedan.wheels[1].TireName);
                                 }
                             }
                             catch (Exception e)
                             {
                                 Console.WriteLine("Invalid Option you should select a number either " +
-                                                  sedan.arrSedan[0].wheel.tireName + " or " +
-                                                  sedan.wheels[1].tireName);
+                                                  sedan.arrSedan[0].Wheel.TireName + " or " +
+                                                  sedan.wheels[1].TireName);
                             }
                         }
 
@@ -150,8 +150,8 @@ namespace Task2
                         string w2 = "";
                         Console.WriteLine("Nice choice " + userName + " to select sonata car");
                         Console.WriteLine("Sonata has 2 two types of wheels, select one:");
-                        Console.WriteLine("1." + sedan.wheels[3].tireName);
-                        Console.WriteLine("2." + sedan.wheels[2].tireName);
+                        Console.WriteLine("1." + sedan.wheels[3].TireName);
+                        Console.WriteLine("2." + sedan.wheels[2].TireName);
 
                         while (!(sonataWheel == (int) SonataWheel.Goodyear ||
                                  sonataWheel == (int) SonataWheel.Firestone))
@@ -161,28 +161,28 @@ namespace Task2
                                 sonataWheel = Convert.ToInt32(Console.ReadLine());
                                 if (sonataWheel == (int) SonataWheel.Goodyear)
                                 {
-                                    Console.WriteLine("Great choice for " + sedan.wheels[3].tireName +
+                                    Console.WriteLine("Great choice for " + sedan.wheels[3].TireName +
                                                       " tire");
                                     w2 = "Goodyear";
                                 }
                                 else if (sonataWheel == (int) SonataWheel.Firestone)
                                 {
-                                    Console.WriteLine("Great choice for " + sedan.wheels[2].tireName +
+                                    Console.WriteLine("Great choice for " + sedan.wheels[2].TireName +
                                                       " tire");
                                     w2 = "Firestone";
                                 }
                                 else
                                 {
                                     Console.WriteLine("Invalid Option you should select a number:\n1." +
-                                                      sedan.wheels[3].tireName + "\n2." +
-                                                      sedan.wheels[2].tireName);
+                                                      sedan.wheels[3].TireName + "\n2." +
+                                                      sedan.wheels[2].TireName);
                                 }
                             }
                             catch (Exception e)
                             {
                                 Console.WriteLine("Invalid Option you should select a number:\n1." +
-                                                  sedan.wheels[3].tireName + "\n2." +
-                                                  sedan.wheels[2].tireName);
+                                                  sedan.wheels[3].TireName + "\n2." +
+                                                  sedan.wheels[2].TireName);
                             }
                         }
 
