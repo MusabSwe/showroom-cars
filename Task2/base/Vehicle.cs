@@ -4,25 +4,26 @@ namespace Task2
 {
     public class Vehicle : IMove
     {
+        public int VehicleId { get; set; }
         public double Price { get; set; }
 
-        public int manufacturerNumber { get; set; }
+        public int ManufacturerNumber { get; set; }
 
-        public DateTime model { get; set; }
+        public DateTime Model { get; set; }
 
-        public string vehicleType { get; set; }
+        public string VehicleType { get; set; }
 
         public string currentGear = "N";
 
-        public bool IsMoveForward = false;
-        public bool IsMoveBackward = false;
-        public bool IsStop = true;
+        // public bool IsMoveForward = false;
+        // public bool IsMoveBackward = false;
+        // public bool IsStop = true;
 
         public Vehicle(int manufacturerNumber, DateTime model, string vehicleType, double price)
         {
-            this.manufacturerNumber = manufacturerNumber;
-            this.model = model;
-            this.vehicleType = vehicleType;
+            this.ManufacturerNumber = manufacturerNumber;
+            this.Model = model;
+            this.VehicleType = vehicleType;
             this.Price = price;
         }
 
@@ -47,8 +48,8 @@ namespace Task2
 
         public string toString()
         {
-            return "vehicle type is " + vehicleType + ", manufacturer number is " + manufacturerNumber +
-                   ", and model " + model + " and price: " + Price + " SAR";
+            return "vehicle type is " + VehicleType + ", manufacturer number is " + ManufacturerNumber +
+                   ", and model " + Model + " and price: " + Price + " SAR";
         }
 
         public void move(string gear)
