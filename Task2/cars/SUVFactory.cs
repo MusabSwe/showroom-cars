@@ -6,7 +6,7 @@ namespace Task2
     public class SUVFactory
     {
         public List<SUV> arrSUV = new List<SUV>();
-        public EngineType[] engines = new EngineType[3];
+        public Engine[] engines = new Engine[3];
         public Wheel[] wheels = new Wheel[8];
 
         public SUVFactory(List<SUV> arr)
@@ -20,14 +20,14 @@ namespace Task2
 
         public void AddSedanCar(SUV a)
         {
-            arrSUV.Add(new SUV(a.name, a.passengerNum, a.numberOfCylinders, a.numberOfDoors, a.engine, a.wheel));
+            arrSUV.Add(new SUV(a.Name, a.PassengerNum, a.NumberOfCylinders, a.NumberOfDoors, a.Engines, a.Wheel));
         }
 
         public void ConnectToDB()
         {
-            engines[0] = new EngineType(1, "Hybrid");
-            engines[1] = new EngineType(2, "Regular");
-            engines[2] = new EngineType(3, "Diesel Engine");
+            engines[0] = new Engine(1, "Hybrid");
+            engines[1] = new Engine(2, "Regular");
+            engines[2] = new Engine(3, "Diesel Engine");
 
             wheels[0] = new Wheel("Okohama", "Japan", new DateTime(2021, 2, 23), 17);
             wheels[1] = new Wheel("Hankook", "China", new DateTime(2021, 4, 17), 16);
@@ -69,8 +69,8 @@ namespace Task2
                     {
                         Console.WriteLine("Nice choice " + userName + " to select Hyundai Creta car");
                         Console.WriteLine("Hyundai Creta has 2 two types of wheels, select one:");
-                        Console.WriteLine("1." + suvs.wheels[3].tireName);
-                        Console.WriteLine("2." + suvs.wheels[4].tireName);
+                        Console.WriteLine("1." + suvs.wheels[3].TireName);
+                        Console.WriteLine("2." + suvs.wheels[4].TireName);
 
                         while (!(hyundaiCretaWheel == (int) CretaWheel.Goodyear ||
                                  hyundaiCretaWheel == (int) CretaWheel.bridgestone))
@@ -80,28 +80,28 @@ namespace Task2
                                 hyundaiCretaWheel = Convert.ToInt32(Console.ReadLine());
                                 if (hyundaiCretaWheel == (int) CretaWheel.Goodyear)
                                 {
-                                    Console.WriteLine("Great choice to select " + suvs.wheels[3].tireName +
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[3].TireName +
                                                       " tire");
-                                    w1 = suvs.wheels[3].tireName;
+                                    w1 = suvs.wheels[3].TireName;
                                 }
                                 else if (hyundaiCretaWheel == (int) CretaWheel.bridgestone)
                                 {
-                                    Console.WriteLine("Great choice to select " + suvs.wheels[4].tireName +
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[4].TireName +
                                                       " tire");
-                                    w1 = suvs.wheels[4].tireName;
+                                    w1 = suvs.wheels[4].TireName;
                                 }
                                 else
                                 {
                                     Console.WriteLine("Invalid Option you should select a number:\n1." +
-                                                      suvs.wheels[3].tireName + "\n2." +
-                                                      suvs.wheels[4].tireName);
+                                                      suvs.wheels[3].TireName + "\n2." +
+                                                      suvs.wheels[4].TireName);
                                 }
                             }
                             catch (Exception e)
                             {
                                 Console.WriteLine("Invalid Option you should select a number:\n1." +
-                                                  suvs.wheels[3].tireName + "\n2." +
-                                                  suvs.wheels[4].tireName);
+                                                  suvs.wheels[3].TireName + "\n2." +
+                                                  suvs.wheels[4].TireName);
                             }
                         }
 
@@ -112,8 +112,8 @@ namespace Task2
                     {
                         Console.WriteLine("Nice choice " + userName + " to select Toyota Fortuner car");
                         Console.WriteLine("Toyota Fortuner has 2 two types of wheels, select one:");
-                        Console.WriteLine("1." + suvs.wheels[4].tireName);
-                        Console.WriteLine("2." + suvs.wheels[1].tireName);
+                        Console.WriteLine("1." + suvs.wheels[4].TireName);
+                        Console.WriteLine("2." + suvs.wheels[1].TireName);
                         string w2 = "";
                         while (!(FortunerWheel == (int) FortunerWheel1.bridgestone ||
                                  FortunerWheel == (int) FortunerWheel1.Hankook))
@@ -123,26 +123,26 @@ namespace Task2
                                 FortunerWheel = Convert.ToInt32(Console.ReadLine());
                                 if (FortunerWheel == (int) FortunerWheel1.bridgestone)
                                 {
-                                    Console.WriteLine("Great choice to select " + suvs.wheels[4].tireName + " tire");
-                                    w2 = suvs.wheels[4].tireName;
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[4].TireName + " tire");
+                                    w2 = suvs.wheels[4].TireName;
                                 }
                                 else if (FortunerWheel == (int) FortunerWheel1.Hankook)
                                 {
-                                    Console.WriteLine("Great choice to select " + suvs.wheels[1].tireName + " tire");
-                                    w2 = suvs.wheels[1].tireName;
+                                    Console.WriteLine("Great choice to select " + suvs.wheels[1].TireName + " tire");
+                                    w2 = suvs.wheels[1].TireName;
                                 }
                                 else
                                 {
                                     Console.WriteLine("Invalid Option you should select one either " +
-                                                      suvs.wheels[4].tireName + " or " +
-                                                      suvs.wheels[1].tireName);
+                                                      suvs.wheels[4].TireName + " or " +
+                                                      suvs.wheels[1].TireName);
                                 }
                             }
                             catch (Exception e)
                             {
                                 Console.WriteLine("Invalid Option you should select a number:\n1." +
-                                                  suvs.wheels[4].tireName + "\n2." +
-                                                  suvs.wheels[1].tireName);
+                                                  suvs.wheels[4].TireName + "\n2." +
+                                                  suvs.wheels[1].TireName);
                             }
                         }
 
