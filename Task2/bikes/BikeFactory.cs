@@ -19,19 +19,19 @@ namespace Task2
 
         public void AddBike(Bike arr)
         {
-            if (arr.engine.EngineName != null)
+            if (arr.Engines.EngineName != null)
             {
-                arrBike.Add(new Bike(arr.name, arr.passengerNum, arr.numberOfWheels, arr.bikeType, arr.engine,
-                    arr.wheel));
+                arrBike.Add(new Bike(arr.Name, arr.PassengerNum, arr.NumberOfWheels, arr.BikeType, arr.Engines,
+                    arr.Wheel));
             }
-            else if (arr.engine.EngineName.ToLower().Equals("regular"))
+            else if (arr.Engines.EngineName.ToLower().Equals("regular"))
             {
-                arrBike.Add(new Bike(arr.name, arr.passengerNum, arr.numberOfWheels, arr.bikeType, arr.engine,
-                    arr.wheel, arr.fuelEcon));
+                arrBike.Add(new Bike(arr.Name, arr.PassengerNum, arr.NumberOfWheels, arr.BikeType, arr.Engines,
+                    arr.Wheel, arr.FuelEcon));
             }
             else
             {
-                arrBike.Add(new Bike(arr.name, arr.passengerNum, arr.numberOfWheels, arr.bikeType, arr.wheel));
+                arrBike.Add(new Bike(arr.Name, arr.PassengerNum, arr.NumberOfWheels, arr.BikeType, arr.Wheel));
             }
         }
 
@@ -41,7 +41,7 @@ namespace Task2
             wheels[1] = new Wheel("Kenda", "America ", new DateTime(2020, 9, 17), 9);
 
             /*0*/
-            arrBike.Add(new Bike("Venom", 2, 2, "motor bike", new EngineType(2, "Regular"),
+            arrBike.Add(new Bike("Venom", 2, 2, "motor bike", new Engine(2, "Regular"),
                 new Wheel("Cobra", "German ", new DateTime(2021, 2, 22), 12),
                 new FuelEconomy("Venom", new DateTime(2021, 3, 4), "Green", "Good")));
             /*1*/
