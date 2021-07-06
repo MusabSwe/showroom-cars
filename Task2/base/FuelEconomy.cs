@@ -2,20 +2,24 @@ using System;
 
 namespace Task2
 {
-    class FuelEconomy
+    public class FuelEconomy
     {
-        private string economyLevel;
-        private string fuelType;
-        private string vehicleName;
-        private DateTime vehicleModel;
+        public int FuelEconomyId { get; set; }
+        public string EconomyLevel { get; set; }
+
+        public string FuelType { get; set; }
+
+        public string VehicleName { get; set; }
+
+        public DateTime VehicleModel { get; set; }
 
         public FuelEconomy(string VehicleName, DateTime vehicleModel, string fuelType, string EconomyLevel)
         {
 
-            this.vehicleName = VehicleName;
-            this.vehicleModel = vehicleModel;
-            this.fuelType = fuelType;
-            this.economyLevel = EconomyLevel;
+            this.VehicleName = VehicleName;
+            this.VehicleModel = vehicleModel;
+            this.FuelType = fuelType;
+            this.EconomyLevel = EconomyLevel;
 
         }
 
@@ -24,18 +28,11 @@ namespace Task2
 
         }
 
-        public string EconomyLevelProp { get; set; }
 
-        public string FuelTypeProp { get; set; }
-
-        public string VehicleNameProp { get; set; }
-
-        public DateTime VehicleModelProp { get; set; }
-
-        public string DisplayFuelInfo()
+        public string toString()
         {
 
-            return "Fuel economy for " + VehicleNameProp + " Model " + VehicleModelProp + " is:\nfuel Type: " + FuelTypeProp + "\nEconomy level: " + EconomyLevelProp;
+            return "Fuel economy for " + VehicleName + " Model " + VehicleModel + " is:\nfuel Type: " + FuelType + "\nEconomy level: " + EconomyLevel;
 
         }
 
