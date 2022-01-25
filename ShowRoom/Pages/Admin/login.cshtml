@@ -1,0 +1,52 @@
+﻿@page
+@model ShowRoom.Pages.loginModel
+@{
+    ViewData["title"] = "Login page";
+}
+
+
+<div class="container-fluid main">
+    <div class="row " style="background-color: #F7F9FB;">
+        <!--background-image: url('Url.Content("~/admin_wallpaper.webp")');-->
+        <div class="col-5 col-md-5 col-sm-5 col-lg-5 col-xl-5 mt-0 mb-0">
+            <img class="img-fluid mt-0 mb-0 loginImg" src="~/admin_wallpaper.webp" />
+        </div>
+
+
+        <div class="col-4 col-md-4 col-sm-4 col-lg-4 col-xl-4 ml-5 mt-5">
+            <div class="container-fluid">
+                <div class="row ">
+                    <div class=" col-sm-5 col-md-5 col-lg-5 col-xl-5">
+
+                    </div>
+                    <div class="col-sm-7 col-md-7 col-lg-7 col-xl-7 mt-5">
+                        <img class="iconAdmin img-fluid " src="~/blue-icon.png" />
+                        <h4 class="mt-2 lead">Log in</h4>
+                    </div>
+                </div>
+            </div>
+
+            <form method="post" class="form-control-sm form-control-lg">
+                @if (Model.Message != null)
+                {
+                    <div class="alert alert-danger">@Model.Message</div>
+                }
+                <label asp-for="credential.UserName" class="mt-5"></label>
+                <input asp-for="credential.UserName" type="text" placeholder="Username" class="form-control" />
+                <span class="text-danger" asp-validation-for="credential.UserName"></span>
+                <br>
+                <label asp-for="credential.Password" class="mt-2"></label>
+                <input asp-for="credential.Password" type="password" placeholder="Enter your password" class="form-control" />
+                <span class="text-danger" asp-validation-for="credential.Password"></span>
+
+                <button class="btn btn-block btn-lg mt-5 login" type="submit"><span class="lead" style="color:white;">Sign in</span></button>
+            </form>
+
+        </div>
+
+        <div class="col-3 col-md-3 col-sm-3 col-lg-3 col-xl-3">
+
+        </div>
+
+    </div>
+    </div>

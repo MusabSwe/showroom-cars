@@ -1,0 +1,111 @@
+﻿@page
+@model ShowRoom.Pages.Admin.BikedataModel
+@{
+    ViewData["title"] = "Bike Data";
+}
+
+<div class="text-center mt-5 mt-sm-5 mt-md-5 mt-lg-5 mt-xl-5">
+    <h1 class="display-4">Bike DataBase</h1>
+</div>
+
+<form method="post" class="ml-5 mr-5 w-50 ">
+
+    <div class="form-group">
+        <label asp-for="bike.Name"></label>
+        <br />
+        <input class="form-control" asp-for="bike.Name" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bike.VehicleType"></label>
+        <br />
+        <input class="form-control" asp-for="bike.VehicleType" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.VehicleType"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bike.Model"></label>
+        <br />
+        <input class="form-control" asp-for="bike.Model" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.Model"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bike.ManufacturerNumber"></label>
+        <br />
+        <input class="form-control" min="0" asp-for="bike.ManufacturerNumber" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.ManufacturerNumber"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bike.PassengerNum"></label>
+        <br />
+        <input class="form-control" type="number" min="1" asp-for="bike.PassengerNum" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.PassengerNum"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bike.NumberOfWheels"></label>
+        <br />
+        <input class="form-control" type="number" min="2" asp-for="bike.NumberOfWheels" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.NumberOfWheels"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bike.BikeType"></label>
+        <br />
+        <input class="form-control"  asp-for="bike.BikeType" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.BikeType"></span>
+    </div>
+
+    <!--Engine-->
+    <div class="form-group">
+        <label asp-for="bike.EngineId">Select an engine: </label>
+        <br />
+        <select class="form-control" asp-for="bike.EngineId" asp-items="Model.Engines">
+            <option value="">Please select one</option>
+        </select>
+        <br />
+        <span class="text-danger" asp-validation-for="bike.EngineId"> </span>
+    </div>
+
+    <!--Wheel-->
+    <div class="form-group">
+        <label asp-for="bike.WheelId">Select the tire: </label>
+        <br />
+        <select class="form-control" asp-for="bike.WheelId" asp-items="Model.Wheels">
+            <option value="">Please select one</option>
+        </select>
+        <br />
+        <span class="text-danger" asp-validation-for="bike.WheelId"> </span>
+    </div>
+
+    <!--Fuel-->
+    <div class="form-group">
+        <label asp-for="bike.FuelEconomyId">Select the fuel economy card: </label>
+        <select class="form-control" asp-for="bike.FuelEconomyId" asp-items="Model.Fuel">
+            <option value="">Please select one</option>
+        </select>
+        <br />
+        <span class="text-danger" asp-validation-for="bike.FuelEconomyId"> </span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="bike.Price"></label>
+        <br />
+        <input class="form-control" type="number" min="0" asp-for="bike.Price" />
+        <br />
+        <span class="text-danger" asp-validation-for="bike.Price"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary text-white">Save</button>
+</form>
+<br />

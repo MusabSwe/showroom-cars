@@ -1,0 +1,85 @@
+﻿@page ""
+@model ShowRoom.Pages.Admin.dashboardModel
+@{
+    ViewData["title"] = "DashBoard";
+}
+
+<h1 class="lead display-4 text-center mt-5">DashBoard</h1>
+<p class="lead text-center">ShowRoom Database</p>
+
+@if (Model.Message != null)
+{
+    <div class="alert alert-info text-center">@Model.Message</div>
+}
+<div class="wrapper">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 h-100">
+                <div class="card">
+                    <img src="~/car_dashboard.png" class="card-img-top img-fluid" />
+                    <div class="card-body">
+                        <h5 class="card-title">Car</h5>
+                        <p>Insert car's data into the database </p>
+                        <div class="card-footer">
+                            <a class="btn btn-sm btn-primary text-white lead " asp-page="/Admin/cardata">Add car</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 h-100">
+                <div class="card">
+                    <img src="~/bike_dashboard.webp" class="card-img-top img-fluid" />
+                    <div class="card-body">
+                        <h5 class="card-title">Bike</h5>
+                        <p>Insert bike's data into the database </p>
+                        <div class="card-footer">
+                            <a class="btn btn-sm btn-primary text-white lead " asp-page="/Admin/bikedata">Add bike</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 h-100">
+                <div class="card">
+                    <img src="~/engine_dashboard.jpg" class="card-img-top img-fluid" />
+                    <div class="card-body">
+                        <h5 class="card-title">engine</h5>
+                        <p>Insert engine's data into the database </p>
+                        <div class="card-footer f2">
+                            <a class="btn btn-sm btn-primary text-white lead " asp-page="/Admin/enginedata" asp-route-engineId="">Add engine</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 h-100">
+                <div class="card">
+                    <img src="~/whell_dashboard.webp" class="card-img-top img-fluid" />
+                    <div class="card-body">
+                        <h5 class="card-title">wheel</h5>
+                        <p>Insert wheel's data into the database </p>
+                        <div class="card-footer">
+                            <a class="btn btn-sm btn-primary text-white lead " asp-page="/Admin/wheeldata">Add wheel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 ">
+                <div class="card">
+                    <img src="~/fuelEconomy.jpg" class="card-img-top img-fluid" />
+                    <div class="card-body">
+                        <h5 class="card-title">fuel economy</h5>
+                        <p>Insert fuel economy's data into the database </p>
+                        <div class="card-footer f3">
+                            <a class="btn btn-sm btn-primary text-white lead" asp-page="/Admin/fueldata">Add fuel economy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

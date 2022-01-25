@@ -1,0 +1,23 @@
+﻿@page ""
+@model ShowRoom.Pages.Admin.EnginedataModel
+@{
+    ViewData["title"] = "Engine Data";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Engine DataBase</h1>
+</div>
+
+<form method="post" class="ml-5 mr-5 w-50">
+
+    <!--input type="hidden" asp-for="Engine.Id" -->
+
+        <div class="form-group">
+            <label asp-for="Engine.EngineName"></label>
+            <input class="form-control" asp-for="Engine.EngineName" />
+            <span class="text-danger" asp-validation-for="Engine.EngineName"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary text-white" >Save</button>
+
+    </form>

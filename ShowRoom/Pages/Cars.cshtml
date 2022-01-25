@@ -1,0 +1,38 @@
+﻿@page
+@model ShowRoom.Pages.CarsModel
+@{
+    ViewData["Title"] = "Showroom cars";
+}
+
+<div class="container-fluid ">
+    <div class="row mt-5">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 mx-auto mt-5">
+            <form method="get">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search for a car" asp-for="searchTerm" />
+                    <button class="btn border">
+                        <i class="fas fa-search text-black-50"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="row mt-5">
+            @foreach (var c in Model.Cars)
+            {
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-5 h-100">
+                    <div class="card">
+                        <img src="@Url.Content(Model.image[c.VehicleId])" class="card-img-top img-fluid" />
+                        <div class="card-body">
+                            <h5 class="card-title">@c.Name</h5>
+                            <p>@Model.type[c.VehicleId] </p>
+                            <div class="card-footer align-content-between">
+                                <a class="btn btn-sm btn-primary text-white lead mr-5">View car</a><span class="text-justify text-white ">@c.Price SAR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>

@@ -1,0 +1,49 @@
+﻿@page
+@model ShowRoom.Pages.Admin.FuelDataModel
+@{
+    ViewData["title"] = "Fuel Economy Card Data";
+}
+<div class="text-center">
+    <h1 class="display-4">Fuel Card DataBase</h1>
+</div>
+
+<form method="post" class="ml-5 mr-5 w-50">
+
+    <!--input type="hidden" asp-for="fuel.Id" -->
+
+    <div class="form-group">
+        <label asp-for="fuel.EconomyLevel"></label>
+        <br />
+        <input class="form-control" asp-for="fuel.EconomyLevel"  />
+        <br />
+        <span class="text-danger" asp-validation-for="fuel.EconomyLevel"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fuel.FuelType"></label>
+        <br />
+        <input class="form-control" asp-for="fuel.FuelType"  />
+        <br />
+        <span class="text-danger" asp-validation-for="fuel.FuelType"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fuel.VehicleName"></label>
+        <br />
+        <input class="form-control" asp-for="fuel.VehicleName"  />
+        <br />
+        <span class="text-danger" asp-validation-for="fuel.VehicleName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fuel.VehicleModel"></label>
+        <br />
+        <input class="form-control" asp-for="fuel.VehicleModel"  />
+        <br />
+        <span class="text-danger" asp-validation-for="fuel.VehicleModel"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary text-white">Save</button>
+
+</form>
+<br />

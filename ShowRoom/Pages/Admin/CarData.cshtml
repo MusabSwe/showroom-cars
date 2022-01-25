@@ -1,0 +1,112 @@
+﻿@page
+@model ShowRoom.Pages.Admin.CarDataModel
+@{
+    ViewData["title"] = "Car Data";
+}
+<div class="text-center">
+    <h1 class="display-4">Car DataBase</h1>
+</div>
+
+<form method="post" class="ml-5 mr-5 w-50 ">
+
+    <div class="form-group">
+        <label asp-for="car.Name"></label>
+        <br />
+        <input class="form-control" asp-for="car.Name" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.Name"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="car.VehicleType"></label>
+        <br />
+        <input class="form-control" asp-for="car.VehicleType" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.VehicleType"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="car.Model"></label>
+        <br />
+        <input class="form-control" asp-for="car.Model" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.Model"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="car.ManufacturerNumber"></label>
+        <br />
+        <input class="form-control" min="0" asp-for="car.ManufacturerNumber" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.ManufacturerNumber"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="car.PassengerNum"></label>
+        <br />
+        <input class="form-control" type="number" min="1" asp-for="car.PassengerNum" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.PassengerNum"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="car.NumberOfCylinders"></label>
+        <br />
+        <input class="form-control" type="number" min="3" asp-for="car.NumberOfCylinders" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.NumberOfCylinders"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="car.NumberOfDoors"></label>
+        <br />
+        <input class="form-control" type="number" min="2" asp-for="car.NumberOfDoors" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.NumberOfDoors"></span>
+    </div>
+
+    <!--Engine-->
+    <div class="form-group">
+        <label asp-for="car.EngineId">Select an engine: </label>
+        <br />
+        <select class="form-control" asp-for="car.EngineId" asp-items="Model.Engines">
+            <option value="">Please select one</option>
+        </select>
+        <br />
+        <span class="text-danger" asp-validation-for="car.EngineId"> </span>
+    </div>
+
+    <!--Wheel-->
+    <div class="form-group">
+        <label asp-for="car.WheelId">Select the tire: </label>
+        <br />
+        <select class="form-control" asp-for="car.WheelId" asp-items="Model.Wheels">
+            <option value="">Please select one</option>
+        </select>
+        <br />
+        <span class="text-danger" asp-validation-for="car.WheelId"> </span>
+    </div>
+
+    <!--Fuel-->
+    <div class="form-group">
+        <label asp-for="car.FuelEconomyId">Select the fuel economy card: </label>
+        <select class="form-control" asp-for="car.FuelEconomyId" asp-items="Model.Fuel">
+            <option value="">Please select one</option>
+        </select>
+        <br />
+        <span class="text-danger" asp-validation-for="car.FuelEconomyId"> </span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="car.Price"></label>
+        <br />
+        <input class="form-control" type="number" min="0" asp-for="car.Price" />
+        <br />
+        <span class="text-danger" asp-validation-for="car.Price"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary text-white">Save</button>
+</form>
+<br />
+
+

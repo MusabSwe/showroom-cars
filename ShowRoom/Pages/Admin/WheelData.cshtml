@@ -1,0 +1,49 @@
+﻿@page ""
+@model ShowRoom.Pages.Admin.WheelDataModel
+@{
+    ViewData["title"] = "Wheel Data";
+}
+<div class="text-center">
+    <h1 class="display-4">Wheel DataBase</h1>
+</div>
+
+<form method="post" class="ml-5 mr-5 w-50 ">
+
+    <!--input type="hidden" asp-for="fuel.Id" -->
+
+    <div class="form-group">
+        <label asp-for="wheel.TireName"></label>
+        <br />
+        <input class="form-control" asp-for="wheel.TireName" />
+        <br />
+        <span class="text-danger" asp-validation-for="wheel.TireName"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="wheel.TireType"></label>
+        <br />
+        <input class="form-control" asp-for="wheel.TireType" />
+        <br />
+        <span class="text-danger" asp-validation-for="wheel.TireType"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="wheel.TireDate"></label>
+        <br />
+        <input class="form-control" asp-for="wheel.TireDate" />
+        <br />
+      <span class="text-danger" asp-validation-for="wheel.TireDate"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="wheel.TireSize"></label>
+        <br />
+        <input class="form-control" type="number" min="0" asp-for="wheel.TireSize" />
+        <br />
+        <span class="text-danger" asp-validation-for="wheel.TireSize"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary text-white">Save</button>
+
+</form>
+<br />

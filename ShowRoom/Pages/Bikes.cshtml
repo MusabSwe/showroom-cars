@@ -1,0 +1,45 @@
+﻿@page
+@model ShowRoom.Pages.BikesModel
+@{
+    ViewData["Title"] = "Showroom bikes";
+}
+
+<div class="container-fluid ">
+    <div class="row mt-5">
+        <div class="col-lg-6 col-sm-6 col-md-6 col-xl-6 mx-auto mt-5">
+            <form method="get">
+                <div class="input-group">
+                    <input class="form-control" type="search" placeholder="Search for a bike" asp-for="searchTerm" />
+                    <button class="btn border">
+                        <i class="fas fa-search text-black-50"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <div class="row mt-5">
+            @{
+                int i = 0;
+                @foreach(var b in Model.bikes)
+                {
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-5 h-100">
+                        <div class="card">
+                            <img src="@Url.Content(Model.image[i])" class="card-img-top img-fluid" />
+                            <div class="card-body">
+                                <h5 class="card-title">@b.Name</h5>
+                                <p>@b.BikeType</p>
+                                <div class="card-footer align-content-between">
+                                    <a class="btn btn-sm btn-primary text-white lead mr-5">View Bike</a><span class="text-justify text-white ">@b.Price SAR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                }
+            }
+        </div>
+    </div>
+</div>
+

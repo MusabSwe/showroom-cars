@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ShowRoom</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="~/css/styles.css" />-->
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
+
+</head>
+    <body style="background-color: #F7F9FB">
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-secondary border-bottom1 box-shadow fixed-top">
+                <div class="container">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index"><span style="color: red">S</span><span style="color:white;">how</span><span style="color: deepskyblue">R</span><span style="color:white;">oom</span></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white " asp-area="" asp-page="/Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white " asp-area="" asp-page="/Cars">Cars Showroom</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white " asp-area="" asp-page="/Bikes">Bikes Showroom</a>
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-page="/Admin/dashboard">DashBoard</a>
+                                </li>
+                            }
+                        </ul>
+                        <div class="mr-2">
+                            <partial name="_LoginStatusPartial" />
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="container-fluid main">
+            <main role="main" class="">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top1 bg-secondary footer text-muted">
+            <div class="container text-white text-center">
+                &copy; 2021 - ShowRoom
+            </div>
+        </footer>
+
+        @await RenderSectionAsync("Scripts", required: false)
+    </body>
+    </html>
