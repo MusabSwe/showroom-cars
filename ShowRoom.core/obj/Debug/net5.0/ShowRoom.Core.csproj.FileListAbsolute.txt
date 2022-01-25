@@ -1,0 +1,12 @@
+C:\ShowRoom\ShowRoom\ShowRoom.core\bin\Debug\net5.0\ShowRoom.Core.deps.json
+C:\ShowRoom\ShowRoom\ShowRoom.core\bin\Debug\net5.0\ShowRoom.Core.dll
+C:\ShowRoom\ShowRoom\ShowRoom.core\bin\Debug\net5.0\ref\ShowRoom.Core.dll
+C:\ShowRoom\ShowRoom\ShowRoom.core\bin\Debug\net5.0\ShowRoom.Core.pdb
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ShowRoom.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ShowRoom.Core.AssemblyInfoInputs.cache
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ShowRoom.Core.AssemblyInfo.cs
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ShowRoom.Core.csproj.CoreCompileInputs.cache
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ShowRoom.Core.dll
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ref\ShowRoom.Core.dll
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ShowRoom.Core.pdb
+C:\ShowRoom\ShowRoom\ShowRoom.core\obj\Debug\net5.0\ShowRoom.Core.csproj.AssemblyReference.cache
